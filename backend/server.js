@@ -53,18 +53,19 @@ app.get('/api/weather/forecast', async (req, res) => {
       params: {
         city: city,
         country: countryCode,
+        days: 16,
         key: apiKey,
       },
     });
 
     const forecastData = response.data.data.map(day => ({
-      date: day.datetime,
+      date: day.valid_date,
       max_temp: day.max_temp,
       min_temp: day.min_temp,
       description: day.weather.description,
       precipitation: day.precip,
       uv_index: day.uv,
-      wind_direction: day_wind_cdir_full,
+      wind_direction: day.wind_cdir_full,
       wind_speed: day.wind_spd,
     }));
 
