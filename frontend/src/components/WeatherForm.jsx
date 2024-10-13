@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const WeatherForm = ({ onFetchWeather }) => {
+const WeatherForm = ({ onFetchWeather, selectedCity, selectedCountryCode }) => {
   const [city, setCity] = useState('');
   const [countryCode, setCountryCode] = useState('');
+
+  useEffect(() => {
+    if (selectedCity) {
+      setCity(selectedCity);
+    }
+
+    if (selectedCountryCode) {
+      setCountryCode(selectedCountryCode);
+    }
+  }, [selectedCity, selectedCountryCode]);
 
   const handleSubmit = event => {
     event.preventDefault();
