@@ -37,6 +37,7 @@ app.get('/api/weather/current', async (req, res) => {
       city_name: weatherData.city_name,
       country_code: weatherData.country_code,
       observation_time: weatherData.ob_time,
+      icon: weatherData.weather.icon,
     });
   } catch (error) {
     console.log(error);
@@ -63,6 +64,7 @@ app.get('/api/weather/forecast', async (req, res) => {
       max_temp: day.max_temp,
       min_temp: day.min_temp,
       description: day.weather.description,
+      icon: day.weather.icon,
       precipitation: day.precip,
       uv_index: day.uv,
       wind_direction: day.wind_cdir_full,

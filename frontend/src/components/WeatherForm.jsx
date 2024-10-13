@@ -4,6 +4,7 @@ const WeatherForm = ({ onFetchWeather, selectedCity, selectedCountryCode }) => {
   const [city, setCity] = useState('');
   const [countryCode, setCountryCode] = useState('');
 
+  // Effect to set the city and country code based on props
   useEffect(() => {
     if (selectedCity) {
       setCity(selectedCity);
@@ -14,6 +15,7 @@ const WeatherForm = ({ onFetchWeather, selectedCity, selectedCountryCode }) => {
     }
   }, [selectedCity, selectedCountryCode]);
 
+  // Handle form submission
   const handleSubmit = event => {
     event.preventDefault();
     if (city && countryCode) {
@@ -21,6 +23,7 @@ const WeatherForm = ({ onFetchWeather, selectedCity, selectedCountryCode }) => {
     }
   };
 
+  // Renders the form
   return (
     <form onSubmit={handleSubmit}>
       <input

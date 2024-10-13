@@ -14,6 +14,7 @@ const App = () => {
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedCountryCode, setSelectedCountryCode] = useState('');
 
+  // Load search history from localStorage on component mount
   useEffect(() => {
     const savedHistory = JSON.parse(
       localStorage.getItem('weatherSearchHistory')
@@ -23,10 +24,12 @@ const App = () => {
     }
   }, []);
 
+  // Save search history to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('weatherSearchHistory', JSON.stringify(searchHistory));
   }, [searchHistory]);
 
+  // Fetch the waether based on city and country code.
   const fetchWeather = async (city, countryCode) => {
     try {
       const response = await axios.get(baseUrl, {
@@ -50,6 +53,7 @@ const App = () => {
     }
   };
 
+  // Updates the saerch history to localStorage
   const updateSearchHistory = (city, countryCode) => {
     const newEntry = { city, countryCode };
     const updatedHistory = [
@@ -59,6 +63,7 @@ const App = () => {
     setSearchHistory(updatedHistory);
   };
 
+  // Handles search history **there seems to be a bug returning search history as nothing is return on click
   const handleHistoryClick = (city, countryCode) => {
     setSelectedCity(city);
     setSelectedCountryCode(countryCode);
@@ -75,7 +80,7 @@ const App = () => {
       />
       <WeatherDisplay weatherData={weatherData} />
       <WeatherForecast forecastData={forecastData} />
-
+      <hr />
       <h3>Search History</h3>
       <ul className="search-history">
         {searchHistory.map((entry, index) => (
