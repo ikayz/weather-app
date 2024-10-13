@@ -77,7 +77,7 @@ const App = () => {
       <WeatherForecast forecastData={forecastData} />
 
       <h3>Search History</h3>
-      <ul>
+      <ul className="search-history">
         {searchHistory.map((entry, index) => (
           <li
             key={index}

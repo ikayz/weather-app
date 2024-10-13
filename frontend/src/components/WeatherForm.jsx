@@ -30,8 +30,6 @@ const WeatherForm = ({ onFetchWeather, selectedCity, selectedCountryCode }) => {
         onChange={event => setCity(event.target.value)}
         required
       />
-      <br />
-      <br />
       <input
         type="text"
         placeholder="Enter country code"
@@ -39,8 +37,6 @@ const WeatherForm = ({ onFetchWeather, selectedCity, selectedCountryCode }) => {
         onChange={event => setCountryCode(event.target.value)}
         required
       />
-      <br />
-      <br />
       <button type="submit">Get Weather</button>
     </form>
   );
